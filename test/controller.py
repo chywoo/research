@@ -29,7 +29,10 @@ class ABC(tizentest.TestCase):
         tizentest.tizenutil.start_sdb_server()
 
         self.sdb.run("devices")
+        self.log("Shutdown")
         tizentest.tizenutil.shutdown_vm(name=tizentest.EMULATOR_NAME_MOBILE)
+
+        self.sdb.run("devices")
 
         self.sdb.terminate()
         self.assertFalse(False)

@@ -1,12 +1,9 @@
 __author__ = 'chywoo.park'
-import  sargetest
+import psutil
 
+for i in psutil.process_iter():
+    print(i.name())
+    # cmd = i.cmdline()
+    # if cmd == ['sdb', 'fork-server', 'server']:
+    #     print("Found")
 
-out = sargetest.Capture()
-p = sargetest.Pipeline("/Users/chywoo.park/tizen23/tools/sdb devices", stdout=out) #, async=True)
-o = p.run(async=True)
-
-print( o.stdout.text )
-
-p.close()
-print("END")
